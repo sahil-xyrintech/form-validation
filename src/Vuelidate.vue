@@ -27,7 +27,7 @@
         v-model="formData.phoneNumber"
         :errors="v$.phoneNumber.$errors"
       />
-
+      {{ formData }}
       <button
         type="submit"
         class="px-3 py-2 mt-6 font-semibold text-white rounded-md bg-sky-600"
@@ -58,7 +58,7 @@ const v$ = useVuelidate(rules, formData);
 const submitForm = async () => {
   const result = await v$.value.$validate();
   if (result) {
-    alert("Succesfull:" + v$.value);
+    alert(JSON.stringify(formData));
   } else {
     alert("Failed");
   }
